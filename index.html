@@ -490,6 +490,9 @@
           <span class="option-label">Outros meios</span>
         </label>
       </div>
+      <div id="outros-field" style="margin-top:12px; display:none;">
+        <textarea id="ans3-outros" placeholder="Qual(is) outros meios?" rows="2"></textarea>
+      </div>
     </div>
 
     <!-- Q4 -->
@@ -635,6 +638,10 @@
     opt.addEventListener('click', function(e) {
       e.preventDefault();
       this.classList.toggle('selected');
+      if (this.dataset.value === 'outros') {
+        const outrosField = document.getElementById('outros-field');
+        outrosField.style.display = this.classList.contains('selected') ? 'block' : 'none';
+      }
       updateProgress();
     });
   });
@@ -652,6 +659,7 @@
       q1_frustracao:       document.getElementById('ans1').value,
       q2_fora_plataforma:  document.getElementById('ans2').value,
       q3_como_te_achavam:  Array.from(document.querySelectorAll('#q3-options .option.selected')).map(o => o.dataset.value),
+      q3_outros:           document.getElementById('ans3-outros').value,
       q4_precificacao:     document.querySelector('#q4-options .option.selected')?.dataset.value,
       q5_mudaria:          document.getElementById('ans5').value,
       q6_beta_tester:      document.querySelector('#q6-options .option.selected')?.dataset.value,
