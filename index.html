@@ -632,7 +632,8 @@
 
   // Checkbox options (multi select)
   document.querySelectorAll('#q3-options .option').forEach(opt => {
-    opt.addEventListener('click', function() {
+    opt.addEventListener('click', function(e) {
+      e.preventDefault();
       this.classList.toggle('selected');
       updateProgress();
     });
